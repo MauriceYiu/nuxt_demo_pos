@@ -12,6 +12,9 @@ export default ({ store, redirect, req, router, app: { $axios } }) => {
     // }
     // request拦截器
     $axios.onRequest(config => {
+        if(!sessionStorage.getItem("storeInfo")){
+            redirect("/login")
+        }
         // if (process.client) {
         //     // 客户端下，请求进度条开始
         //     NProgress.start();

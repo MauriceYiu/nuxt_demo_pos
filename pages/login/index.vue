@@ -18,7 +18,7 @@
     <div class="store-list" v-if="showStoreList">
       <div class="list-wrap">
         <ul>
-          <li class="item" v-for="item in storeList" :key="item.id">
+          <li class="item" v-for="item in storeList" :key="item.id" @click.stop="toIndex(item)">
             {{item.storeName}}
           </li>
         </ul>
@@ -59,7 +59,13 @@ export default {
         }
       });
     },
-    register() {},
+    toIndex(item){
+      sessionStorage.setItem("storeInfo",item);
+      this.$router.push('/storeSale');
+    },
+    register() {
+      
+    },
   },
 };
 </script>
